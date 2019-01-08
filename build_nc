@@ -1,0 +1,54 @@
+## 
+## build NanoCheeZe daemon on Ubuntu 14.0.1
+## 
+## @cybershrapnel 01/08/2019
+
+## 
+## # Download NanoCheeZe source code
+## #----------------------------
+cd ~
+
+#Download and compile Berkley DB 4.8
+#-----------------------------------
+##
+## need these to resolve build error : LRELEASE not found
+## your milage may vary
+##
+sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get install git qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
+        build-essential libboost-dev libboost-system-dev \
+        libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
+        libssl-dev libdb++-dev libminiupnpc-dev \
+	protobuf-compiler libboost-all-dev libqrencode-dev
+
+## this creates the directory ~/NanoCheeze so it MUST NOT EXIST
+##git clone https://github.com/cybershrapnel/NanoCheeZe.git
+	
+##
+## Build BERKELEY DB 4.8 and stash it where NanoCheeZe makefile 
+## can find it
+cd ~/NanoCheeZe
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+tar -xzvf db-4.8.30.NC.tar.gz
+mkdir -v NanoCheeZe/db4/
+cd ~NanoCheeZe/db-4.8.30.NC/build_unix
+nanocheeze=$(whoami)
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=/home/$nanocheeze/NanoCheeZe/db4/
+make install
+
+#Compile NanoCheeZe daemon with Berkley DB 4.8
+#-----------------------------------
+cd ~/NanoCheeZe/src
+make -f makefile.unix
+mv nanocheezed ~/NanoCheeZe/
+
+
+cd ~/NanoCheeZe
+qmake
+make
+
+cd ~
+mkdir -v .NanoCheeZe/
+cd ~/.NanoCheeZe
+wget "nanocheeze.com/peers.dat"

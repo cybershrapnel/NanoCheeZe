@@ -1,0 +1,14 @@
+Building Bitcoin on Linux! Ubuntu 14
+
+
+Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14.04 by bashing the install script.
+sudo bash ~/NanoCheeZe/build_nc
+
+enter password or type Y if prompted...
+
+It's that easy!
+
+
+For Windows
+Download Windows the exe from http://nanocheeze.com/NanoCheeZe-qt.exe
+gitian compile instructions for windows exe build coming soon...
