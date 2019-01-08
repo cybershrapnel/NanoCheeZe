@@ -11,8 +11,10 @@ cd ~
 #Download and compile Berkley DB 4.8
 #-----------------------------------
 ##
-sudo apt-get upgrade
-sudo apt-get update
+##sudo apt-get upgrade
+##sudo apt-get update
+##uncomment above lines if build fails... you probably need updates. but the final 14.04 LTS image will build this PERFECT!
+
 sudo apt-get install git qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
         build-essential libboost-dev libboost-system-dev \
         libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
