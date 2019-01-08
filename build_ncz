@@ -21,16 +21,17 @@ sudo apt-get install git qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-to
 
 ## this creates the directory ~/NanoCheeze so it MUST NOT EXIST
 git clone https://github.com/cybershrapnel/NanoCheeZe.git
-	
+nanocheeze=$(whoami)
+
 ##
 ## Build BERKELEY DB 4.8 and stash it where NanoCheeZe makefile 
 ## can find it
 cd ~/NanoCheeZe
 wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
 tar -xzvf db-4.8.30.NC.tar.gz
-mkdir -v NanoCheeZe/db4/
-cd ~NanoCheeZe/db-4.8.30.NC/build_unix
-nanocheeze=$(whoami)
+mkdir -v ~/NanoCheeZe/db4/
+cd ~/NanoCheeZe/db-4.8.30.NC/build_unix
+
 ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=/home/$nanocheeze/NanoCheeZe/db4/
 make install
 
@@ -54,5 +55,5 @@ cp -v peers.dat ~/.NanoCheeZe/
 cd ~/NanoCheeZe/share
 cp -v NanoCheeZe.conf ~/.NanoCheeZe/
 
-cd ~NanoCheeZe
+cd ~/NanoCheeZe
 ./NanoCheeZe-qt
