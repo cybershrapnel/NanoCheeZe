@@ -1,5 +1,5 @@
 ## 
-## build NanoCheeZe daemon on Ubuntu 14.0.1
+## build NanoCheeZe daemon on Ubuntu 14.0.4 LTS
 ## 
 ## @cybershrapnel 01/08/2019
 
@@ -10,9 +10,6 @@ cd ~
 
 #Download and compile Berkley DB 4.8
 #-----------------------------------
-##
-## need these to resolve build error : LRELEASE not found
-## your milage may vary
 ##
 sudo apt-get upgrade
 sudo apt-get update
@@ -52,7 +49,7 @@ make
 
 cd ~
 mkdir -v .NanoCheeZe/
-cd ~/.NanoCheeZe/share
+cd ~/NanoCheeZe/share
 cp -v peers.dat ~/.NanoCheeZe/
-cd ~/.NanoCheeZe/share
+cd ~/NanoCheeZe/share
 cp -v NanoCheeZe.conf ~/.NanoCheeZe/
