@@ -1,14 +1,39 @@
 Building Bitcoin on Linux! Ubuntu 14
 
-
 Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14.04 by bashing the install script.
-sudo bash ~/NanoCheeZe/build_nc
+Step 1:
+wget "https://raw.githubusercontent.com/cybershrapnel/NanoCheeZe/master/build_nc"
+Step 2:
+sudo bash build_nc
 
 enter password or type Y if prompted...
 
 It's that easy!
 
+(modify build_nc, after doing wget, as needed if you don't want your system updated/upgraded., etc)
+
+
+--------
+
+Ubuntu 16 and 18
+
+If you have build instructions, Please share them, The HoboNickels community would like them as well...
+
+
+--------
 
 For Windows
+
 Download Windows the exe from http://nanocheeze.com/NanoCheeZe-qt.exe
-gitian compile instructions for windows exe build coming soon...
+
+gitian (debian/ubuntu) compile instructions for the windows exe build coming soon...
+
+I have only ever compiled the windows exe from a gitian ubuntu/debian environment and it's not easy.
+
+
+--------
+
+For Mac
+
+Goto China... 
+lol, No, but really, macOSX build instructions are the same as for HoboNickels which is the same as many other coins. No need to duplicate information.
