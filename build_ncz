@@ -53,3 +53,6 @@ cd ~/NanoCheeZe/share
 cp -v peers.dat ~/.NanoCheeZe/
 cd ~/NanoCheeZe/share
 cp -v NanoCheeZe.conf ~/.NanoCheeZe/
+
+cd ~NanoCheeZe
+./NanoCheeZe-qt
