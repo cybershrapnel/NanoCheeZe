@@ -4,7 +4,7 @@ Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14.04 by bashing t
 Step 1:
 wget "https://raw.githubusercontent.com/cybershrapnel/NanoCheeZe/master/build_ncz"
 Step 2:
-sudo bash build_ncz
+bash build_ncz
 
 enter password or type Y if prompted...
 
