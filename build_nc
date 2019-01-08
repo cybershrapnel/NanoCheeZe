@@ -43,8 +43,8 @@ cd ~/NanoCheeZe/src
 make -f makefile.unix
 mv nanocheezed ~/NanoCheeZe/
 cd ~/NanoCheeZe/src/leveldb/out-static/
-mv libleveldb.a ~/NanoCheeZe/src/leveldb/
-mv libmemenv.a ~/NanoCheeZe/src/leveldb/
+cp -v libleveldb.a ~/NanoCheeZe/src/leveldb/
+cp -v libmemenv.a ~/NanoCheeZe/src/leveldb/
 
 cd ~/NanoCheeZe
 qmake
