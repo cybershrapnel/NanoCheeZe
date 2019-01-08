@@ -1,0 +1,4 @@
+obj/version.o: version.cpp version.h clientversion.h \
+ /home/rqn842/NanoCheeZe/src/obj/build.h
+version.cpp version.h clientversion.h :
+ /home/rqn842/NanoCheeZe/src/obj/build.h :

@@ -1,0 +1,16 @@
+obj/rpcdump.o: rpcdump.cpp bitcoinrpc.h \
+ json/json_spirit_reader_template.h json/json_spirit_value.h \
+ json/json_spirit_error_position.h json/json_spirit_writer_template.h \
+ json/json_spirit_utils.h util.h uint256.h tinyformat.h netbase.h \
+ serialize.h allocators.h version.h clientversion.h compat.h \
+ checkpoints.h net.h mruset.h protocol.h addrman.h sync.h threadsafety.h \
+ hash.h ui_interface.h base58.h bignum.h key.h script.h keystore.h \
+ crypter.h init.h wallet.h main.h scrypt.h walletdb.h db.h timer.h
+rpcdump.cpp bitcoinrpc.h :
+ json/json_spirit_reader_template.h json/json_spirit_value.h :
+ json/json_spirit_error_position.h json/json_spirit_writer_template.h :
+ json/json_spirit_utils.h util.h uint256.h tinyformat.h netbase.h :
+ serialize.h allocators.h version.h clientversion.h compat.h :
+ checkpoints.h net.h mruset.h protocol.h addrman.h sync.h threadsafety.h :
+ hash.h ui_interface.h base58.h bignum.h key.h script.h keystore.h :
+ crypter.h init.h wallet.h main.h scrypt.h walletdb.h db.h timer.h :

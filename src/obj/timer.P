@@ -1,0 +1,2 @@
+obj/timer.o: timer.cpp timer.h
+timer.cpp timer.h :
