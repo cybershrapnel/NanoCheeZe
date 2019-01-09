@@ -322,8 +322,10 @@ void BitcoinGUI::createActions()
     aboutAction->setStatusTip(tr("Show information about NanoCheeZe"));
     aboutAction->setMenuRole(QAction::AboutRole);
 
-
-
+	//if building on qt 4.8 uncomment this line to get qt icon and comment out the next one below it
+    //aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
+	
+	//if building on qt5 leave this next line active.
     aboutQtAction = new QAction(QIcon(":/qt-project.org/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
