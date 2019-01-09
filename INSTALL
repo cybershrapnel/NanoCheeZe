@@ -1,4 +1,4 @@
-Building NanoCheeZe on Linux! Ubuntu 14
+Building NanoCheeZe on Linux! Ubuntu 14 and 16 and 18
 
 Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14.04 by bashing the install script.
 Step 1:
@@ -12,13 +12,8 @@ It's that easy!
 
 (modify build_ncz, after doing wget, as needed if you need/want your system updated/upgraded., etc)
 
-
---------
-
-Ubuntu 16 and 18
-
-If you have build instructions, Please share them, The HoboNickels community would like them as well...
-
+Not tested on Debian directly but Gitian build from debian works for building windows exe.
+I recently fixed the build_ncz script so it now runs on version 14, 15, and 18 of ubuntu! Previously would only compile on 14.
 
 --------
 
@@ -30,6 +25,9 @@ gitian (debian/ubuntu) compile instructions for the windows exe build coming soo
 
 I have only ever compiled the windows exe from a gitian ubuntu/debian environment and it's not easy.
 
+If you do try to build this I suggest swapping out the leveldb folder with the leveldb folder from steepcoin just as a tip until I fix things in that area.
+
+Also note that on windows I use qt4.8 instead of qt5. If you compile on qt4.8 you will need to uncomment the trolltech line in src\qt\bitcoingui.cpp  or you will not have an icon for Qt in the menu bar.
 
 --------
 
