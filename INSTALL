@@ -1,6 +1,6 @@
 Building NanoCheeZe on Linux! Ubuntu 14 and 16
 
-Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14.04 by bashing the install script.
+Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14/16 by bashing the install script.
 Step 1:
 wget "https://raw.githubusercontent.com/cybershrapnel/NanoCheeZe/master/build_ncz"
 Step 2:
