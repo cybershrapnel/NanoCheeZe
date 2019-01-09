@@ -1,4 +1,4 @@
-Building NanoCheeZe on Linux! Ubuntu 14 and 16 and 18
+Building NanoCheeZe on Linux! Ubuntu 14 and 16
 
 Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14.04 by bashing the install script.
 Step 1:
@@ -13,7 +13,9 @@ It's that easy!
 (modify build_ncz, after doing wget, as needed if you need/want your system updated/upgraded., etc)
 
 Not tested on Debian directly but Gitian build from debian works for building windows exe.
-I recently fixed the build_ncz script so it now runs on version 14, 15, and 18 of ubuntu! Previously would only compile on 14.
+I recently fixed the build_ncz script so it now runs on version 14 and 16 of ubuntu! Previously would only compile on 14.
+
+Ubuntu 18 still won't compile NanoCheeZe but I'm working on it.
 
 --------
 
