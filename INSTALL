@@ -10,7 +10,7 @@ enter password or type Y if prompted...
 
 It's that easy!
 
-(modify build_nc, after doing wget, as needed if you need/want your system updated/upgraded., etc)
+(modify build_ncz, after doing wget, as needed if you need/want your system updated/upgraded., etc)
 
 
 --------
