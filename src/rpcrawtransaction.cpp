@@ -208,12 +208,12 @@ Value listunspent(CWallet* pWallet, const Array& params, bool fHelp)
         {
             CTxDestination address;
             if (ExtractDestination(pk, address))
-            {
-                const CScriptID& hash = boost::get<CScriptID&>(address);
-                //const CScriptID& hash = boost::get<const CScriptID&>(address);
-                CScript redeemScript;
-                if (pWallet->GetCScript(hash, redeemScript))
-                    entry.push_back(Pair("redeemScript", HexStr(redeemScript.begin(), redeemScript.end())));
+            { //commented out lines 212-216 to fix compile bug on ubuntu 16+ line 213 has always been commented out fyi
+                //const CScriptID& hash = boost::get<CScriptID&>(address);
+                ////const CScriptID& hash = boost::get<const CScriptID&>(address);
+                //CScript redeemScript;
+                //if (pWallet->GetCScript(hash, redeemScript))
+                //    entry.push_back(Pair("redeemScript", HexStr(redeemScript.begin(), redeemScript.end())));
             }
         }
         entry.push_back(Pair("amount",ValueFromAmount(nValue)));
