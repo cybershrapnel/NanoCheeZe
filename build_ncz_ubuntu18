@@ -1,0 +1,61 @@
+## 
+## build NanoCheeZe daemon on Ubuntu 14.0.4 LTS
+## 
+## @cybershrapnel 01/08/2019
+
+## 
+## # Download NanoCheeZe source code
+## #----------------------------
+cd ~
+
+#Download and compile Berkley DB 4.8
+#-----------------------------------
+##
+##sudo apt-get upgrade
+##sudo apt-get update
+##uncomment above lines if build fails... you probably need updates. but the final 14.04 LTS image will build this PERFECT!
+
+sudo apt-get install git qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
+        build-essential libboost-dev libboost-system-dev \
+        libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
+        libssl1.0-dev libdb++-dev libminiupnpc-dev \
+	protobuf-compiler libboost-all-dev libqrencode-dev
+
+## this creates the directory ~/NanoCheeze so it MUST NOT EXIST
+git clone https://github.com/cybershrapnel/NanoCheeZe.git
+nanocheeze=$(whoami)
+
+##
+## Build BERKELEY DB 4.8 and stash it where NanoCheeZe makefile 
+## can find it
+cd ~/NanoCheeZe
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+tar -xzvf db-4.8.30.NC.tar.gz
+mkdir -v ~/NanoCheeZe/db4/
+cd ~/NanoCheeZe/db-4.8.30.NC/build_unix
+
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=/home/$nanocheeze/NanoCheeZe/db4/
+make install
+
+#Compile NanoCheeZe daemon with Berkley DB 4.8
+#-----------------------------------
+cd ~/NanoCheeZe/src
+make -f makefile.unix
+mv nanocheezed ~/NanoCheeZe/
+cd ~/NanoCheeZe/src/leveldb/out-static/
+cp -v libleveldb.a ~/NanoCheeZe/src/leveldb/
+cp -v libmemenv.a ~/NanoCheeZe/src/leveldb/
+
+cd ~/NanoCheeZe
+qmake
+make
+
+cd ~
+mkdir -v .NanoCheeZe/
+cd ~/NanoCheeZe/share
+cp -v peers.dat ~/.NanoCheeZe/
+cd ~/NanoCheeZe/share
+cp -v NanoCheeZe.conf ~/.NanoCheeZe/
+
+cd ~/NanoCheeZe
+./NanoCheeZe-qt
