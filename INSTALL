@@ -4,7 +4,11 @@ Currently NanoCheeZe can be easily compiled and ran on Ubuntu 14/16 by bashing t
 Step 1:
 wget "https://raw.githubusercontent.com/cybershrapnel/NanoCheeZe/master/build_ncz"
 Step 2:
+on ubuntu 16 and below just type the following command in a terminal after doing step 1.
 bash build_ncz
+or
+(Ubuntu 18 and up)
+bash build_ncz_ubuntu18
 
 enter password or type Y if prompted...
 
@@ -14,8 +18,6 @@ It's that easy!
 
 Not tested on Debian directly but Gitian build from debian works for building windows exe.
 I recently fixed the build_ncz script so it now runs on version 14 and 16 of ubuntu! Previously would only compile on 14.
-
-Ubuntu 18 still won't compile NanoCheeZe but I'm working on it.
 
 --------
 
