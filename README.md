@@ -4,9 +4,7 @@ NanoCheeZe Virtual Crypto Tokens
 Fixed compiling for Ubuntu 18 and up. simple OpenSSL version issue. pretty mad now that I found the problem lol... Still haven't investigated the boost issue with what I mentioned in the last update, but I suspect this may resolve it? I haven't tried yet though... but it compiles on ubuntu 18 for sure now. Haven't tested anything else but I think 19 and 20 will work too? will update later.
 
 Note/Update: (1/10/2020)
-I have commented out lines 212-216 in the rpcrawtransaction.cpp file. The boost libraries are halting compiling on Ubuntu 16+ running certain ecosystems.  I will investigate this further. The nanocheezed and qt apps work just fine but obviously commenting out that section will effect the rawtransaction command using boost. I don't think this will be an issue though. Landlord has illegally evicted me so I will be unable to update for a bit. everything is running in the cloud right now. If anyone wants to POW mine, this is a good time because I'm strictly POS mining right now from AWS machines to propogate the network. my ASIC miner is offline while I move.
-
-I think this will compile on Ubuntu 18+ now as well??? not tested though.
+I have commented out lines 212-216 in the rpcrawtransaction.cpp file. The boost libraries are halting compiling on Ubuntu 16+ running certain ecosystems.  I will investigate this further. The nanocheezed and qt apps work just fine but obviously commenting out that section will effect the rawtransaction command using boost. I don't think this will be an issue though
 
 * Staking:
   * 100% Max Yearly Stake Reward
