@@ -1,4 +1,5 @@
 NanoCheeZe Virtual Crypto Tokens
+
 5/20/21
 updated staking rewards limits to reduce by 50% every 1 million blocks starting at 1 million.
 Lessons learned from Hobonickels is that MAX_MONEY is not the supply limit of coins but the tx transfer limit.
