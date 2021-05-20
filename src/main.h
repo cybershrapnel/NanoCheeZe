@@ -44,7 +44,11 @@ static const int64_t MIN_TX_FEE = 0.1 * CENT;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
 static const int64_t MIN_RELAY_TX_FEE = 0.1 * CENT;
 /** No amount larger than this (in satoshi) is valid */
-static const int64_t MAX_MONEY = 240000000 * COIN; //240 million coins max
+static const int64_t MAX_MONEY = 240000000 * COIN; //240 million coins max transfer per tx
+//MAX_MONEY is not the cap on the number of coins. There is no cap
+//Main.cpp has been altered to reflect this. Max staking rewards reduce 50% every 1 million blocks starting at 1 million. Update or be forked.
+//Once we hit 8 million coins you can only generate 1 NCZ per POS block or 5 NCZ per POW. This will essentially cap the supplybut not stop coin generation.
+//These are lessons learned from Hobonickels, Bitgems, and Novacoin.
 /** Base Rate for Proof of Work Reward */
 static const int64_t MAX_MINT_PROOF_OF_WORK = 5 * COIN;
 /** Base Rate for Proof of Stake Reward(Incorrect), kept for sync */
