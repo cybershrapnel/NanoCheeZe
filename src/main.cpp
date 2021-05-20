@@ -1225,6 +1225,34 @@ int64_t GetProofOfStakeRewardV2(int64_t nCoinAge, unsigned int nBits, unsigned i
     CBigNum bnTargetLimit = bnProofOfStakeLimit;
     bnTargetLimit.SetCompact(bnTargetLimit.GetCompact());
     int64_t nSubsidyLimit = 250 * COIN;
+	
+	
+if (nBestHeight>8000000){
+nSubsidyLimit = 1 * COIN;
+}
+else if (nBestHeight>7000000){
+nSubsidyLimit = 2 * COIN;
+}
+else if (nBestHeight>6000000){
+nSubsidyLimit = 4 * COIN;
+}
+else if (nBestHeight>5000000){
+nSubsidyLimit = 8 * COIN;
+}
+else if (nBestHeight>4000000){
+nSubsidyLimit = 16 * COIN;
+}
+else if (nBestHeight>3000000){
+nSubsidyLimit = 32 * COIN;
+}
+else if (nBestHeight>2000000){
+nSubsidyLimit = 63 * COIN;
+}
+else if (nBestHeight>1000000){
+nSubsidyLimit = 125 * COIN;
+}
+//nBestHeight
+	
 
     // NanoCheeZe: reward for coin-year is cut in half every 64x multiply of PoS difficulty
     // A reasonably continuous curve is used to avoid shock to market
@@ -1273,6 +1301,33 @@ int64_t GetProofOfStakeRewardV3(int64_t nCoinAge, unsigned int nBits, unsigned i
     bnTargetLimit.SetCompact(bnTargetLimit.GetCompact());
     int64_t nSubsidyLimit = 250 * COIN;
 
+	
+if (nBestHeight>8000000){
+nSubsidyLimit = 1 * COIN;
+}
+else if (nBestHeight>7000000){
+nSubsidyLimit = 2 * COIN;
+}
+else if (nBestHeight>6000000){
+nSubsidyLimit = 4 * COIN;
+}
+else if (nBestHeight>5000000){
+nSubsidyLimit = 8 * COIN;
+}
+else if (nBestHeight>4000000){
+nSubsidyLimit = 16 * COIN;
+}
+else if (nBestHeight>3000000){
+nSubsidyLimit = 32 * COIN;
+}
+else if (nBestHeight>2000000){
+nSubsidyLimit = 63 * COIN;
+}
+else if (nBestHeight>1000000){
+nSubsidyLimit = 125 * COIN;
+}
+//nBestHeight
+	
     // NanoCheeZe: reward for coin-year is cut in half every 128x multiply of PoS difficulty
     // A reasonably continuous curve is used to avoid shock to market
     // (bnRewardCoinYearLimit / nRewardCoinYear) ** 5 == bnProofOfStakeLimit / bnTarget
