@@ -130,7 +130,7 @@
         <string>Send a percentage of stake to a specified NanoCheeZe address</string>
        </property>
        <property name="text">
-        <string>&amp;Stake For Charity</string>
+        <string>&amp;Stake Splitting</string>
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
