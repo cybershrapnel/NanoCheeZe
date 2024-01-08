@@ -3,6 +3,8 @@ NanoCheeZe Virtual Crypto Tokens
 OP_RETURNS have been implemented into NCZ crypto tokens! 255 character limi.
 Python script are available in the main repo directory to send and get messages with OP_RETURN commands.
 
+If you are having trouble with connecting to the RPC server, try launching "./NanoCheeZe-qt -txindex -daemon"
+
 easy compile instructions for ubuntu 12 and 14
 
 Step 1:
