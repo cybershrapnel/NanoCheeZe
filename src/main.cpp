@@ -437,7 +437,7 @@ bool IsStandardTx(const CTransaction& tx)
 {
     if (tx.nVersion > CTransaction::CURRENT_VERSION)
         return false;
-
+ 
     // Treat non-final transactions as non-standard to prevent a specific type
     // of double-spend attack, as well as DoS attacks. (if the transaction
     // can't be mined, the attacker isn't expending resources broadcasting it)
@@ -455,16 +455,16 @@ bool IsStandardTx(const CTransaction& tx)
     // Timestamps on the other hand don't get any special treatment, because we
     // can't know what timestamp the next block will have, and there aren't
     // timestamp applications where it matters.
-
+ 
     if (!IsFinalTx(tx, nBestHeight + 1)) {
         return false;
     }
-
+ 
     // nTime has different purpose from nLockTime but can be used in similar attacks
     if (tx.nTime > FutureDrift(GetAdjustedTime())) {
         return false;
     }
-
+ 
     // Extremely large transactions with lots of inputs can cost the network
     // almost as much to process as they cost the sender in fees, because
     // computing signature hashes is O(ninputs*txsize). Limiting transactions
@@ -472,9 +472,9 @@ bool IsStandardTx(const CTransaction& tx)
     unsigned int sz = tx.GetSerializeSize(SER_NETWORK, CTransaction::CURRENT_VERSION);
     if (sz >= MAX_STANDARD_TX_SIZE)
         return false;
-
-
-
+ 
+ 
+ 
     BOOST_FOREACH(const CTxIn& txin, tx.vin)
     {
         // Biggest 'standard' txin is a 3-signature 3-of-3 CHECKMULTISIG
@@ -487,10 +487,21 @@ bool IsStandardTx(const CTransaction& tx)
         if (!txin.scriptSig.HasCanonicalPushes())
             return false;
     }
-
+ 
     unsigned int nDataOut = 0;
-    txnouttype whichType;
+
     BOOST_FOREACH(const CTxOut& txout, tx.vout) {
+    txnouttype whichType;
+            if (txout.scriptPubKey.size() > 0 && txout.scriptPubKey[0] == OP_RETURN) {
+    if (nDataOut > 1) {
+        return false;
+    }
+        if (!txout.scriptPubKey.HasCanonicalPushes())
+            return false;
+    
+                // Allow OP_RETURN transactions
+                return true;
+} 
         if (!::IsStandard(txout.scriptPubKey, whichType))
             return false;
         if (whichType == TX_NULL_DATA)
@@ -500,12 +511,12 @@ bool IsStandardTx(const CTransaction& tx)
         if (!txout.scriptPubKey.HasCanonicalPushes())
             return false;
     }
-
+ 
     // only one OP_RETURN txout is permitted
     if (nDataOut > 1) {
         return false;
     }
-
+ 
     return true;
 }
 
@@ -679,6 +690,13 @@ bool CTransaction::CheckTransaction() const
     for (unsigned int i = 0; i < vout.size(); i++)
     {
         const CTxOut& txout = vout[i];
+
+
+    // Exempt op_return transactions from value checks
+    if (txout.scriptPubKey.size() > 0 && txout.scriptPubKey[0] == OP_RETURN) {
+        continue; // Skip further checks for op_return outputs
+}
+
         if (txout.IsEmpty() && !IsCoinBase() && !IsCoinStake())
             return DoS(100, error("CTransaction::CheckTransaction() : txout empty for user transaction"));
 
@@ -1225,8 +1243,8 @@ int64_t GetProofOfStakeRewardV2(int64_t nCoinAge, unsigned int nBits, unsigned i
     CBigNum bnTargetLimit = bnProofOfStakeLimit;
     bnTargetLimit.SetCompact(bnTargetLimit.GetCompact());
     int64_t nSubsidyLimit = 250 * COIN;
-	
-	
+
+
 if (nBestHeight>8000000){
 nSubsidyLimit = 1 * COIN;
 }
@@ -1252,7 +1270,6 @@ else if (nBestHeight>1000000){
 nSubsidyLimit = 125 * COIN;
 }
 //nBestHeight
-	
 
     // NanoCheeZe: reward for coin-year is cut in half every 64x multiply of PoS difficulty
     // A reasonably continuous curve is used to avoid shock to market
@@ -1301,7 +1318,7 @@ int64_t GetProofOfStakeRewardV3(int64_t nCoinAge, unsigned int nBits, unsigned i
     bnTargetLimit.SetCompact(bnTargetLimit.GetCompact());
     int64_t nSubsidyLimit = 250 * COIN;
 
-	
+
 if (nBestHeight>8000000){
 nSubsidyLimit = 1 * COIN;
 }
@@ -1327,7 +1344,7 @@ else if (nBestHeight>1000000){
 nSubsidyLimit = 125 * COIN;
 }
 //nBestHeight
-	
+
     // NanoCheeZe: reward for coin-year is cut in half every 128x multiply of PoS difficulty
     // A reasonably continuous curve is used to avoid shock to market
     // (bnRewardCoinYearLimit / nRewardCoinYear) ** 5 == bnProofOfStakeLimit / bnTarget
