@@ -1,5 +1,29 @@
 NanoCheeZe Virtual Crypto Tokens
 
+OP_RETURNS have been implemented into NCZ crypto tokens! 255 character limi.
+Python script are available in the main repo directory to send and get messages with OP_RETURN commands.
+
+easy compile instructions for ubuntu 12 and 14
+
+Step 1:
+
+wget "https://raw.githubusercontent.com/cybershrapnel/NanoCheeZe/master/build_ncz"
+
+Step 2:
+
+on ubuntu 16 and below just type the following command in a terminal after doing step 1.
+
+command to use:
+
+bash build_ncz
+
+See the readme for other install options and the windows exe of the NanoCheeZe-qt app!
+
+1/9/2024
+FInally got OP_RETURN commandd implemented and working right. Updated version numbers. Update client or you will fork. old V2 client will not allow new block rules. Changes may still be needed so keep up to date.
+
+Ordinal Inscriptions next. Still working out the proof of reclamation thing.
+
 5/20/21
 updated staking rewards limits to reduce by 50% every 1 million blocks starting at 1 million.
 Lessons learned from Hobonickels is that MAX_MONEY is not the supply limit of coins but the tx transfer limit.
