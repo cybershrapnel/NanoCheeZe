@@ -20,7 +20,7 @@ bash build_ncz
 See the readme for other install options and the windows exe of the NanoCheeZe-qt app!
 
 1/9/2024
-FInally got OP_RETURN commandd implemented and working right. Updated version numbers. Update client or you will fork. old V2 client will not allow new block rules. Changes may still be needed so keep up to date.
+FInally got OP_RETURN commands implemented and working right. Updated version numbers. Update your client or you will fork. The old V2 client will not allow new block rules. Changes may still be needed, so please keep up to date.
 
 Ordinal Inscriptions next. Still working out the proof of reclamation thing.
 
