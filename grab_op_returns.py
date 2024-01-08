@@ -7,9 +7,12 @@ import time
 
 RPC_USER = 'nanocheeze'
 RPC_PASSWORD = 'ncz'
-RPC_HOST = '192.168.1.1'
+RPC_HOST = '192.168.1.100'
 RPC_PORT = '12782'
-
+block_number = 1567567  # Starting block number
+#Shoul be set in conf file by default but may need adjustments per node installation
+#make sure to set the block number to start at or it starts where op_returns began
+#This python script works with both NanoCheeZe-qt and nanocheezed if setup properly
 
 def generate_filename(block_number, prefix="raw"):
     today = datetime.date.today()
@@ -67,29 +70,50 @@ def get_op_return_data(block_number, txid, filename=""):
     raw_tx = call_rpc('getrawtransaction', [txid, 1], filename)
     if not raw_tx:
         return None
-
+    errors=0
     for vout in raw_tx.get('vout', []):
         if 'scriptPubKey' in vout and 'asm' in vout['scriptPubKey']:
             asm = vout['scriptPubKey']['asm']
             if asm.startswith('OP_RETURN'):
+                #print(asm)
                 hex_data = asm.split(' ')[1]
+                #hex_data = vout['scriptPubKey']['hex'][4:]
+                #print(f"found asm split! {hex_data}")
+                #print(f"vout: {vout}")
+                #print(f"vouts: {vout['scriptPubKey']}")
+                #print(f"raw: {raw_tx}")
                 counter=True
+                didit=0
+                hex_data = vout['scriptPubKey']['hex'][4:]
                 while len(hex_data) > 0:
-                    
+                    didit=didit+1
+                    if didit >=5:
+                        break
                     try:
                         # Attempt to decode the hex data
                         decoded_data = bytes.fromhex(hex_data).decode('utf-8')
                         if counter:
-                            decoded_data = bytes.fromhex(hex_data).decode('utf-8')[2:]
+                            decoded_data = bytes.fromhex(hex_data).decode('utf-8')
                         return block_number, txid, hex_data, decoded_data
                     except UnicodeDecodeError:
                         counter=False
                         # Remove the first two characters and retry
-                        hex_data = hex_data[2:]
+
                     except Exception as e:
-                        print(f"Error decoding OP_RETURN data: {e}")
-                        break
-                print(f"Unable to decode OP_RETURN data for txid {txid}")
+                        #print(f"Error decoding block {block_number} OP_RETURN data: {e}")
+                        #print(hex_data)
+                        errors=errors+1
+
+                    hex_data = hex_data[1:]
+                    if len(hex_data) <= 100:
+                        hex_data = asm.split(' ')[1]
+                #print(f"Unable to decode block {block_number} OP_RETURN data for txid {txid} - {vout}")
+                print(f"We found a entry with only hex values at the tx below. It will be displayed shortly.")
+                print(f"malformed tx: {txid}")
+                return block_number, txid, vout['scriptPubKey']['hex'][4:], vout['scriptPubKey']['hex'][4:]
+
+                        
+                
     return None
 
 
@@ -125,14 +149,17 @@ def process_block(block_number):
     return True
 
 def main():
-    block_number = 1544566  # Starting block number
+    notsaid=True
     while True:
         success = process_block(block_number)
         if not success:
-            print(f"Block number {block_number} out of range, waiting for 1 minute...")
+            if notsaid:
+                print(f"Block number {block_number} out of range, waiting for next block...")
+                notsaid=False
             time.sleep(60)  # Wait for 1 minute before retrying
             continue
         block_number += 1  # Increment the block number for the next iteration
+        notsaid=True
 
 if __name__ == "__main__":
     main()
