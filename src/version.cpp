@@ -11,7 +11,7 @@
 const std::string CLIENT_NAME("NanoCheeZe");
 
 // Client version number
-#define CLIENT_VERSION_SUFFIX   "-V2.1"
+#define CLIENT_VERSION_SUFFIX   "-V3.1"
 
 
 // The following part of the code determines the CLIENT_BUILD variable.
