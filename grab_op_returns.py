@@ -9,9 +9,7 @@ RPC_USER = 'nanocheeze'
 RPC_PASSWORD = 'ncz'
 RPC_HOST = '192.168.1.100'
 RPC_PORT = '12782'
-block_number = 1567567  # Starting block number
-#Shoul be set in conf file by default but may need adjustments per node installation
-#make sure to set the block number to start at or it starts where op_returns began
+#also set your block number at the bottom of page if desired!
 #This python script works with both NanoCheeZe-qt and nanocheezed if setup properly
 
 def generate_filename(block_number, prefix="raw"):
@@ -149,6 +147,9 @@ def process_block(block_number):
     return True
 
 def main():
+    block_number = 1569000  # Starting block number
+    #Should be set in conf file by default but may need adjustments per node installation
+    #make sure to set the block number to start at or it starts where op_returns began
     notsaid=True
     while True:
         success = process_block(block_number)
