@@ -700,10 +700,20 @@ bool CTransaction::CheckTransaction() const
         if (txout.IsEmpty() && !IsCoinBase() && !IsCoinStake())
             return DoS(100, error("CTransaction::CheckTransaction() : txout empty for user transaction"));
 
-        // ppcoin: enforce minimum output amount
-        if ((!txout.IsEmpty()) && txout.nValue < MIN_TXOUT_AMOUNT)
-            return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));
+BOOST_FOREACH(const CTxOut& txout, vout)
+{
+    if (!txout.IsEmpty())
+    {
+        // Check if the first opcode is OP_RETURN
+        if (txout.scriptPubKey.size() > 0 && txout.scriptPubKey[0] == OP_RETURN) {
+            // This is an OP_RETURN output, so it's unspendable and can bypass the check
+            continue;
+        }
 
+        if (txout.nValue < MIN_TXOUT_AMOUNT)
+            return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum"));
+    }
+}
 
         if (txout.nValue < 0)
             return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue is negative"));
