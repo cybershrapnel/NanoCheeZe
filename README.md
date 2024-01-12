@@ -1,5 +1,14 @@
 NanoCheeZe Virtual Crypto Tokens
 
+1/11/2024
+made a small update to main.cpp to account for the chain enforcement protocol now that op_returns are available. nodes running in txindex mode were unable to move past any blocks with 0 burn op_returns. I added this code somewhere around line 780 in main.cpp and it works like butter.
+
+BOOST_FOREACH(const CTxOut& txout, vout){   if (!txout.IsEmpty())   {       // Check if the first opcode is OP_RETURN
+        if (txout.scriptPubKey.size() > 0 && txout.scriptPubKey[0] == OP_RETURN) {
+            // This is an OP_RETURN output, so it's unspendable and can bypass the check
+            continue;        }
+        if (txout.nValue < MIN_TXOUT_AMOUNT) { return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum")); }  }}
+
 OP_RETURNS have been implemented into NCZ crypto tokens! 255 character limi.
 Python script are available in the main repo directory to send and get messages with OP_RETURN commands.
 
