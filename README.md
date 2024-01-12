@@ -1,5 +1,5 @@
 NanoCheeZe Virtual Crypto Tokens
-
+<a href="https://opreturn.nanocheeze.com">opreturn.nanocheeze.com</a> is available for testing
 1/11/2024
 made a small update to main.cpp to account for the chain enforcement protocol now that op_returns are available. nodes running in txindex mode were unable to move past any blocks with 0 burn op_returns. I added this code somewhere around line 780 in main.cpp and it works like butter.
 
@@ -8,8 +8,9 @@ BOOST_FOREACH(const CTxOut& txout, vout){   if (!txout.IsEmpty())   {       // C
             // This is an OP_RETURN output, so it's unspendable and can bypass the check
             continue;        }
         if (txout.nValue < MIN_TXOUT_AMOUNT) { return DoS(100, error("CTransaction::CheckTransaction() : txout.nValue below minimum")); }  }}
-
-OP_RETURNS have been implemented into NCZ crypto tokens! 255 character limi.
+-------------
+1/10/2024
+OP_RETURNS have been implemented into NCZ crypto tokens! 255 character limit.
 Python script are available in the main repo directory to send and get messages with OP_RETURN commands.
 
 If you are having trouble with connecting to the RPC server, try launching "./NanoCheeZe-qt -txindex -daemon"
