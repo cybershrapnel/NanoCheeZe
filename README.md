@@ -1,11 +1,11 @@
 NanoCheeZe Virtual Crypto Tokens
-<a href="https://opreturn.nanocheeze.com">opreturn.nanocheeze.com</a> is available for testing
+<br/>
 <br/>
 1/13/2024 Free Air Drops have been enabled at <a href="https://airdrop.nanocheeze.com">airdrop.nanocheeze.com</a>
 <br/>
 Just enter your NCZ address and receive some coins!
-<br/>
-
+<br/><br/>
+<a href="https://opreturn.nanocheeze.com">opreturn.nanocheeze.com</a> is available for testing
 1/11/2024
 made a small update to main.cpp to account for the chain enforcement protocol now that op_returns are available. nodes running in txindex mode were unable to move past any blocks with 0 burn op_returns. I added this code somewhere around line 780 in main.cpp and it works like butter.
 
