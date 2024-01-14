@@ -23,20 +23,13 @@ I recently fixed the build_ncz script so it now runs on version 14 and 16 of ubu
 --------
 
 For Windows
+Easy install option - Download this file and install: https://install.nanocheeze.com
+Download the Windows qt exe directly from http://download.nanocheeze.com or from the releases page
+or grab the installer from the release page or https://github.com/cybershrapnel/NanoCheeZe/releases/download/3.1.2.9/NanoCheeZe.exe
+releases: https://github.com/cybershrapnel/NanoCheeZe/releases
 
-Download the Windows exe from http://nanocheeze.com/NanoCheeZe-qt.exe
-
-gitian (debian/ubuntu) compile instructions for the windows exe build coming soon...
-
-I have only ever compiled the windows exe from a gitian ubuntu/debian environment and it's not easy.
-
-If you do try to build this I suggest swapping out the leveldb folder with the leveldb folder from steepcoin just as a tip until I fix things in that area.
-
-Also note that on windows I use qt4.8 instead of qt5. If you compile on qt4.8 you will need to uncomment the trolltech line in src\qt\bitcoingui.cpp  or you will not have an icon for Qt in the menu bar.
 
 --------
 
 For Mac
-
-Goto China... 
-lol, No, but really, macOSX build instructions are the same as for HoboNickels which is the same as many other coins. No need to duplicate information.
+????
